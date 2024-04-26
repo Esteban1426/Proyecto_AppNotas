@@ -12,8 +12,7 @@ class MainActivity : AppCompatActivity() {
 
         val BotonComenzar = findViewById<Button>(R.id.Comenzar)
         BotonComenzar.setOnClickListener {
-            // Navegar a la siguiente pantalla
-            startActivity(Intent(this, Registro::class.java))
+            startActivity(Intent(this, Login::class.java))
         }
     }
 }

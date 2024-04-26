@@ -20,35 +20,47 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.443" />
 
-    <TextView
-        android:id="@+id/tvResultado"
+    <EditText
+        android:id="@+id/campoNota3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Agrega nota 3"
+        android:inputType="numberDecimal"
         android:padding="10dp"
-        android:text="Resultado:"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.824" />
+        app:layout_constraintVertical_bias="0.508" />
 
-    <Button
-        android:id="@+id/Calcular"
-        android:layout_width="438dp"
-        android:layout_height="49dp"
-        android:backgroundTint="#E61515"
+    <EditText
+        android:id="@+id/campoNota4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Agrega nota 4"
+        android:inputType="numberDecimal"
         android:padding="10dp"
-        android:text="Calcular Porcentaje Total"
-        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.708" />
+        app:layout_constraintVertical_bias="0.589" />
+
+    <EditText
+        android:id="@+id/campoNota5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Agrega nota 5"
+        android:inputType="numberDecimal"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.673" />
 
     <TextView
         android:id="@+id/ListaNotas"
@@ -60,25 +72,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.604" />
-
-    <Button
-        android:id="@+id/AgregarNota"
-        android:layout_width="443dp"
-        android:layout_height="47dp"
-        android:backgroundTint="#E61515"
-        android:padding="10dp"
-        android:text="Agregar Nota"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.406"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.516" />
+        app:layout_constraintVertical_bias="0.762" />
 
     <EditText
         android:id="@+id/campoNota"
@@ -114,27 +111,42 @@
         android:id="@+id/imageView3"
         android:layout_width="191dp"
         android:layout_height="165dp"
-        android:layout_marginBottom="512dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.554"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.114"
         app:srcCompat="@drawable/calculadora" />
 
+    <TextView
+        android:id="@+id/tvResultado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Resultado:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.961" />
+
     <Button
-        android:id="@+id/botonGuardar"
-        android:layout_width="443dp"
-        android:layout_height="47dp"
+        android:id="@+id/Calcular"
+        android:layout_width="438dp"
+        android:layout_height="49dp"
         android:backgroundTint="#E61515"
         android:padding="10dp"
-        android:text="Agregar Nota"
+        android:text="Calcular Porcentaje Total"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.406"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.516" />
+        app:layout_constraintVertical_bias="0.856" />
 
     <TextView
         android:id="@+id/Notas"
@@ -143,8 +155,8 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.403"
+        app:layout_constraintHorizontal_bias="0.596"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.606" />
+        app:layout_constraintVertical_bias="0.755" />
 </androidx.constraintlayout.widget.ConstraintLayout>
