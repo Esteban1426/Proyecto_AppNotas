@@ -60,11 +60,9 @@ class Registro : AppCompatActivity() {
                             if (uid != null) {
                                 usersRef.child(uid).setValue(userMap)
                                     .addOnSuccessListener {
-                                        // Registro de datos de usuario exitoso
                                         mostraralerta("Registro Exitoso", "Usuario ingresado correctamente")
                                     }
                                     .addOnFailureListener {
-                                        // Error al registrar datos de usuario
                                         Toast.makeText(this, "Error al registrar datos de usuario.", Toast.LENGTH_SHORT).show()
                                     }
                             }
