@@ -32,14 +32,18 @@ class Login : AppCompatActivity() {
             val email = Email.text.toString()
             val password = Password.text.toString()
 
-            Autenticacion.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        mostrarHome(task.result?.user?.email?: "", ProviderType.BASIC)
-                    } else {
-                        Toast.makeText(baseContext, "Inicio de sesión fallido.", Toast.LENGTH_SHORT).show()
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(baseContext, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show()
+            } else {
+                Autenticacion.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            mostrarHome(task.result?.user?.email ?: "", ProviderType.BASIC)
+                        } else {
+                            Toast.makeText(baseContext, "Inicio de sesión fallido.", Toast.LENGTH_SHORT).show()
+                        }
                     }
-                }
+            }
         }
 
         val Registrarse = findViewById<TextView>(R.id.Registro)

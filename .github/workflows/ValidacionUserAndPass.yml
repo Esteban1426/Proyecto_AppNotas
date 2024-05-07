@@ -1,0 +1,28 @@
+name: Validacion USER y PASSWORD
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    env: 
+      username: ${{secrets.USER_ME}}
+      password: ${{secrets.PASSWORD_ME}}
+      
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Valor secretos de user y password
+        run: |
+          echo "Valor secreto del Usuario: ${{env.username}}"
+          echo "Valor secreto del password: ${{env.password}}"
+        
+      - name: Validacion de existencia de valor para los secrets
+        if: ${{env.username != '' && env.password != ''}}
+        run: |
+          echo Si existen valores para Username y Password
+      - name: Valores iguales a ...
+        if: ${{env.username == 'alej1426@gmail.com' && env.password == '1426esteban.'}}
+        run: |
+          echo Los valores coninden con los secrets

@@ -1,0 +1,21 @@
+name: Validacion Base datos
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    env:
+      database: ${{secrets.DATABASE}}
+    
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Database con valor Secreto
+        run: |
+          echo "Url de la la Base de datos: ${{env.database}}"
+          
+      - name: Validacion Database
+        if: ${{env.database != ''}}
+        run: echo "Secrets de base de datos contiene un valor"
