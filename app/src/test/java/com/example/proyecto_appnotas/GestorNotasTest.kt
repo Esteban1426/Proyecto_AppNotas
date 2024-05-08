@@ -1,32 +1,32 @@
 package com.example.proyecto_appnotas
 
-import org.junit.Assert.*
-
+import org.junit.Assert
 import org.junit.Test
-import org.junit.jupiter.api.Assertions
 
 class GestorNotasTest {
 
     @Test
-    fun calcularPromedio() {
-        // Caso de prueba 1: Notas válidas
-        val gestorNotas = TestPromedio()
+    fun `calcular promedio con dos notas`() {
+        val prueba = TestPromedio()
+        val notas = listOf(3.5, 4.0)
+        val promedio = prueba.calcularPromedio(notas)
+        Assert.assertEquals(3.75, promedio, 0.01)
+        println("Prueba 1: Resultado esperado: 3.75, Resultado obtenido: $promedio")
+    }
+    @Test
+    fun `calcular promedio con tres notas`() {
+        val prueba = TestPromedio()
+        val notas = listOf(3.5, 4.0, 5.0)
+        val promedio = prueba.calcularPromedio(notas)
+        Assert.assertEquals(3.75, promedio, 0.01)
+        println("Prueba 1: Resultado esperado: 3.5, Resultado obtenido: $promedio")
+    }
 
-        val resultadoEsperado = 4.6
-        val resultadoCalculado = gestorNotas.calcularPromedio(4.0, 5.0, 5.0, 5.0, 4.0)
-        Assertions.assertEquals(resultadoEsperado, resultadoCalculado, 0.001)
-        println("PRUEBA #1: $resultadoEsperado, Resultado calculado: $resultadoCalculado")
-
-        // Caso de prueba 2: Nota1 válida, Nota2 nula
-        val resultadoEsperado2 = 3.6
-        val resultadoCalculado2 = gestorNotas.calcularPromedio(4.0, 5.0, 2.0, 5.0, 2.0)
-        Assertions.assertEquals(resultadoEsperado2, resultadoCalculado2, 0.001)
-        println("PRUEBA #2: $resultadoEsperado2, Resultado calculado: $resultadoCalculado2")
-
-        // Caso de prueba 3: Nota1 nula, Nota2 válida
-        val resultadoEsperado3 = 2.6
-        val resultadoCalculado3 = gestorNotas.calcularPromedio(4.0, 0.0, 0.0, 5.0, 4.0)
-        Assertions.assertEquals(resultadoEsperado3, resultadoCalculado3, 0.001)
-        println("PRUEBA #3: $resultadoEsperado3, Resultado calculado: $resultadoCalculado3")
+    @Test(expected = IllegalArgumentException::class)
+    fun `lanzar excepcion cuando menos de dos notas`() {
+        val prueba = TestPromedio()
+        val notas = listOf(3.5)
+        prueba.calcularPromedio(notas)
+        println("Prueba 2: Excepción esperada lanzada correctamente")
     }
 }

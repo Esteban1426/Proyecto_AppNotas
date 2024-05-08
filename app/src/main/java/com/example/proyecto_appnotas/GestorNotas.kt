@@ -3,11 +3,16 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.FirebaseFirestore
+
 enum class  ProviderType{
     BASIC
 }
 class GestorNotas : AppCompatActivity() {
+
+    private lateinit var Basedatos: FirebaseFirestore
 
     lateinit var campoNota1: EditText
     lateinit var campoNota2: EditText
@@ -22,6 +27,8 @@ class GestorNotas : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gestor_notas)
 
+        Basedatos = FirebaseFirestore.getInstance()
+
         campoNota1 = findViewById(R.id.campoNota)
         campoNota2 = findViewById(R.id.campoNota2)
         campoNota3 = findViewById(R.id.campoNota3)
@@ -33,21 +40,62 @@ class GestorNotas : AppCompatActivity() {
         botonCalcular = findViewById(R.id.Calcular)
 
         botonCalcular.setOnClickListener {
-            val nota1 = campoNota1.text.toString().toDoubleOrNull() ?: 0.0
-            val nota2 = campoNota2.text.toString().toDoubleOrNull() ?: 0.0
-            val nota3 = campoNota3.text.toString().toDoubleOrNull() ?: 0.0
-            val nota4 = campoNota4.text.toString().toDoubleOrNull() ?: 0.0
-            val nota5 = campoNota5.text.toString().toDoubleOrNull() ?: 0.0
 
-            val promedio = calcularPromedio(nota1, nota2, nota3, nota4, nota5)
+            val textoNota1 = campoNota1.text.toString()
+            val textoNota2 = campoNota2.text.toString()
+            val textoNota3 = campoNota3.text.toString()
+            val textoNota4 = campoNota4.text.toString()
+            val textoNota5 = campoNota5.text.toString()
 
-            tvNotas.text = "$nota1 + $nota2 + $nota3 + $nota4 + $nota5"
+            var cantidadNotas = 0
+            val notas = mutableListOf<Double>()
+            if (textoNota1.isNotBlank()) {
+                notas.add(textoNota1.toDouble())
+                cantidadNotas++
+            }
+            if (textoNota2.isNotBlank()) {
+                notas.add(textoNota2.toDouble())
+                cantidadNotas++
+            }
+            if (textoNota3.isNotBlank()) {
+                notas.add(textoNota3.toDouble())
+                cantidadNotas++
+            }
+            if (textoNota4.isNotBlank()) {
+                notas.add(textoNota4.toDouble())
+                cantidadNotas++
+            }
+            if (textoNota5.isNotBlank()) {
+                notas.add(textoNota5.toDouble())
+                cantidadNotas++
+            }
 
-            tvResultado.text = "Resultado: $promedio"
+            if (cantidadNotas < 2) {
+                Toast.makeText(this, "Se necesitan mínimo 2 notas para realizar el cálculo", Toast.LENGTH_SHORT).show()
+            } else {
+                val promedio = notas.sum() / cantidadNotas
+
+                tvNotas.text = notas.joinToString(" + ")
+                tvResultado.text = "Resultado: $promedio"
+
+                val notaData = hashMapOf(
+                    "nota1" to textoNota1,
+                    "nota2" to textoNota2,
+                    "nota3" to textoNota3,
+                    "nota4" to textoNota4,
+                    "nota5" to textoNota5,
+                    "Promedio" to promedio
+                )
+
+                Basedatos.collection("Datos")
+                    .add(notaData)
+                    .addOnSuccessListener { documentReference ->
+                        Toast.makeText(this, "Notas registradas en Firestore correctamente", Toast.LENGTH_SHORT).show()
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(this, "Error al registrar las notas en Firestore: $e", Toast.LENGTH_SHORT).show()
+                    }
+            }
         }
-    }
-
-    fun calcularPromedio(nota1: Double, nota2: Double, nota3: Double, nota4: Double, nota5: Double): Double {
-        return (nota1 + nota2 + nota3 + nota4 + nota5) / 5
     }
 }
