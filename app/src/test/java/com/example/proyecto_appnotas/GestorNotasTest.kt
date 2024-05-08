@@ -16,10 +16,10 @@ class GestorNotasTest {
     @Test
     fun `calcular promedio con tres notas`() {
         val prueba = TestPromedio()
-        val notas = listOf(3.5, 4.0, 5.0)
+        val notas = listOf(3.6, 4.0, 5.0)
         val promedio = prueba.calcularPromedio(notas)
-        Assert.assertEquals(3.75, promedio, 0.01)
-        println("Prueba 1: Resultado esperado: 3.5, Resultado obtenido: $promedio")
+        Assert.assertEquals(4.2, promedio, 0.01)
+        println("Prueba 2: Resultado esperado: 4.2, Resultado obtenido: $promedio")
     }
 
     @Test(expected = IllegalArgumentException::class)
